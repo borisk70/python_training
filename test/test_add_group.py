@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from model.group import Group
-import pytest
-from data.add_group import constant as testdata
+##import pytest
+##from data.groups import constant as testdata
 #from data.add_group import testdata
 #import random
 #import string
@@ -26,8 +26,9 @@ from data.add_group import constant as testdata
   #      for i in range(5)
 #]
 
-@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_add_group(app, group):
+#@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+def test_add_group(app, json_groups):
+        group = json_groups
         app.session.login(username="admin", password="secret")
         old_groups=app.group.get_group_list()
         app.group.create(group)
